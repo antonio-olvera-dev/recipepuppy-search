@@ -1,0 +1,19 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.main-card{
+    width: fit-content;
+    max-width: 540px;
+}
+
+.div-img-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.img-card{
+    
+}
+

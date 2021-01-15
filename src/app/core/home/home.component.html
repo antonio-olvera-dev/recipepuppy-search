@@ -1,1 +1,19 @@
-<p>home works!</p>
+<div [ngStyle]="{margin: '3em'}">
+    <button class="btn btn-danger animate__animated animate__bounce">Button Boostrap</button>
+    <button mat-raised-button class="animate__animated  animate__backInRight" color="primary">Button Material</button>
+  </div>
+
+  <div class="container">
+ <div class="card-group">
+  <app-card-recipe
+  *ngFor="let item of [0,5,2,5]"
+  [title]="'Titulo'"
+  [urlImg]="'http://img.recipepuppy.com/292760.jpg'"
+  [urlDetailsIn]="'Details'"
+  [ingredients]="'Cebolla, ajo...'"
+  class="card-in-home"
+  >
+  </app-card-recipe>
+</div>
+  </div>
+ 

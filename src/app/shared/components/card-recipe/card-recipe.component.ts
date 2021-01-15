@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-card-recipe',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardRecipeComponent implements OnInit {
 
+  @Input() title:string = "";
+  @Input() urlImg:string = "";
+  @Input() urlDetailsIn:string = "";
+  @Input() ingredients:string = "";
+  date:Date = new Date();
+
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+
+  goDetails(){
+    
+    alert(`${this.urlDetailsIn}`);
+  }
+
 
 }
