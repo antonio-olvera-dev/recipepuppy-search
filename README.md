@@ -22,3 +22,11 @@ $ cd ..
 $ npm run api
 $ ng serve
 ```
+- Finalmente abrir cualquier navegador en http://localhost:4200
+## Otros
+### Back
+- El Back corre en el puerto 3000
+- Ruta: http://localhost:3000
+### Front
+- El Front corre en el puerto 4200
+- Ruta: http://localhost:4200
