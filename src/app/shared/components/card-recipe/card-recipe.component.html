@@ -5,10 +5,14 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 (click)="goDetails()" class="card-title">{{title}}</h5>
-                <p class="card-text">{{ingredients}}</p>
+                <h5 (click)="goDetails()"
+                [matTooltip]="title" matTooltipPosition="above" [matTooltipClass]="'tooltip-red'"
+                 class="card-title">{{title | shorten:20:false}}</h5>
+                <p class="card-text"
+                [matTooltip]="ingredients" matTooltipPosition="above" [matTooltipClass]="'tooltip-red'"
+                >{{ingredients | shorten:60:true}}</p>
                 <p class="card-text"><small class="text-muted">{{date | date}}</small></p>
-            </div>
+            </div> 
         </div>
     </div>
 </div>

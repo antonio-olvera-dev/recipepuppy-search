@@ -1,74 +1,63 @@
+<main class="main-home" [ngClass]="{'main-home-2': searchBool}">
 
-<main class="main-home">
 
-
-  <div class="div-icon" *ngIf="searchBool"> 
-    <button (click)="searchBool = false" mat-mini-fab color="warn" aria-label="Example icon button with a plus one icon">
+  <div class="div-icon" *ngIf="searchBool">
+    <button (click)="reset()" mat-mini-fab color="warn" class="animate__animated animate__fadeInLeft" aria-label="Example icon button with a plus one icon">
       <mat-icon>restore</mat-icon>
     </button>
   </div>
 
-<section class="section-home" *ngIf="!searchBool">
-  <!-- --------------query------------------- -->
-  <mat-form-field appearance="legacy" class="input-search">
-    <mat-label>Recipes</mat-label>
-    <input [(ngModel)]="query" matInput placeholder="Write a recipe">
-  </mat-form-field>
+  <section class="section-home animate__animated animate__fadeInDown" *ngIf="!searchBool">
+    <!-- --------------query------------------- -->
+    <mat-form-field appearance="legacy" class="input-search">
+      <mat-label>Recipes</mat-label>
+      <input [(ngModel)]="query" matInput placeholder="Write a recipe">
+    </mat-form-field>
 
-<!-- ----------Chips------------ -->
-<div class="chip-home">
-  <mat-form-field>
-    <mat-label>ingredients</mat-label>
-    <mat-chip-list #chipList aria-label="ingredients selection">
-      <mat-chip  *ngFor="let ingredient of ingredients"
-       [selectable]="true"
-       [removable]="true" (removed)="remove(ingredient)"
-       color="primary"
-       selected
-       >
-        {{ingredient}}
-        <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
-      </mat-chip>
-      <input placeholder="New ingredients..."
-             [matChipInputFor]="chipList"
-             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-             [matChipInputAddOnBlur]="true"
-             (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-  </mat-form-field>
+    <!-- ----------Chips------------ -->
+    <div class="chip-home">
+      <mat-form-field>
+        <mat-label>ingredients</mat-label>
+        <mat-chip-list #chipList aria-label="ingredients selection">
+          <mat-chip *ngFor="let ingredient of ingredients" [selectable]="true" [removable]="true"
+            (removed)="remove(ingredient)" color="primary" selected>
+            {{ingredient}}
+            <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="New ingredients..." [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+      </mat-form-field>
 
-  <button
-  matTooltip="Number of pages to display"
-  matTooltipPosition="right"
-  [matTooltipClass]="'tooltip-red'"
-   class="outlet" mat-button [matMenuTriggerFor]="menu">{{pages}}</button>
-  <mat-menu #menu="matMenu">
-    <button class="outlet" (click)="pages = '1'" mat-menu-item>1</button>
-    <button class="outlet" (click)="pages = '2'" mat-menu-item>2</button>
-    <button class="outlet" (click)="pages = '3'" mat-menu-item>3</button>
-    <button class="outlet" (click)="pages = '4'" mat-menu-item>4</button>
-  </mat-menu>
-</div>
+      <button matTooltip="Number of pages to display" matTooltipPosition="above" [matTooltipClass]="'tooltip-red'"
+        class="outlet" mat-button [matMenuTriggerFor]="menu">{{pages}}</button>
+      <mat-menu #menu="matMenu">
+        <button class="outlet" (click)="pages = '1'" mat-menu-item>1</button>
+        <button class="outlet" (click)="pages = '2'" mat-menu-item>2</button>
+        <button class="outlet" (click)="pages = '3'" mat-menu-item>3</button>
+        <button class="outlet" (click)="pages = '4'" mat-menu-item>4</button>
+      </mat-menu>
+    </div>
 
-  <!-- -------------Button--------------------- -->
-  <button (click)="search()" type="button" class="btn btn-primary btn-lg bt-search-home">Search Recipes</button>
-</section>
+    <!-- -------------Button--------------------- -->
+    <button (click)="search();" type="button" class="btn btn-primary btn-lg bt-search-home">Search Recipes</button>
+  </section>
 
 
 
   <!-- ------------Cards-------------- -->
-  <div class="container" *ngIf="searchBool">
-    <div class="card-group">
-     <app-card-recipe
-     *ngFor="let item of [0,5,2,5]"
-     [title]="'Titulo'"
-     [urlImg]="'http://img.recipepuppy.com/292760.jpg'"
-     [urlDetailsIn]="'Details'"
-     [ingredients]="'Cebolla, ajo...'"
-     class="card-in-home"
-     >
-     </app-card-recipe>
-   </div>
-     </div>
-    
+  <div  class="container" *ngIf="searchBool">
+    <h1 class="h1-home" *ngIf="recipes.length <= 0">Without results</h1>
+    <div class="card-group" *ngIf="recipes.length > 0">
+      <app-card-recipe *ngFor="let recipe of recipes" 
+      [title]="recipe.title"
+        [urlImg]="recipe.thumbnail" 
+        [urlDetailsIn]="recipe.href"
+         [ingredients]="recipe.ingredients"
+        class="card-in-home animate__animated animate__flipInY">
+      </app-card-recipe>
+    </div>
+  </div>
+
 </main>

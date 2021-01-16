@@ -22,6 +22,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CardRecipeComponent } from './shared/components/card-recipe/card-recipe.component';
 import { HomeComponent } from './core/home/home.component';
+import { ShortenPipe } from './shared/pipes/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './core/home/home.component';
     HeaderComponent,
     FooterComponent,
     CardRecipeComponent,
-    HomeComponent
+    HomeComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,

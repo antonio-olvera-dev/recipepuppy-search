@@ -1,19 +1,76 @@
-*{
-    margin: 0%;
-    padding: 0%;
+* {
+  margin: 0%;
+  padding: 0%;
 }
-.main-card{
-    width: fit-content;
-    max-width: 540px;
+.main-card {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  max-width: 20em;
+  min-width: 20em;
+  height: 10em;
+  margin: 1em;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  transition-duration: 150ms;
+}
+.main-card:hover {
+  transform: scale(1.03, 1.03);
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.6);
 }
 
-.div-img-card{
+.div-img-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.img-card {
+}
+
+.col-md-8 {
+  justify-content: center;
+}
+
+.card-title {
+  color: cadetblue;
+  font-weight: 600;
+  font-size: 1em;
+  margin: 0.5em;
+  cursor: pointer;
+  user-select: none;
+  transition-duration: 100ms;
+}
+.card-title:hover {
+  color: rgb(68, 114, 116);
+}
+.card-title:active {
+  color: black;
+}
+
+.card-text {
+  font-size: 1em;
+  margin: 0.5em;
+}
+
+::ng-deep.tooltip-red {
+  background: #1c64b7;
+  font-size: 1em;
+}
+
+@media (max-width: 767px) {
+  .main-card {
+    height: fit-content;
+  }
+}
+
+@media (max-width: 540px) {
+  .main-card {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
+    max-width: fit-content;
+    min-width: fit-content;
+    height: fit-content;
+    margin: 1em;
+  }
 }
-.img-card{
-    
-}
-

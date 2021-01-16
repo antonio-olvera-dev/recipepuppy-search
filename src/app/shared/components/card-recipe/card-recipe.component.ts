@@ -8,21 +8,20 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 export class CardRecipeComponent implements OnInit {
 
-  @Input() title:string = "";
-  @Input() urlImg:string = "";
-  @Input() urlDetailsIn:string = "";
-  @Input() ingredients:string = "";
-  date:Date = new Date();
+  @Input() title: string = "";
+  @Input() urlImg: string = "";
+  @Input() urlDetailsIn: string = "";
+  @Input() ingredients: string = "";
+  date: Date = new Date();
 
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
-  goDetails(){
-    
-    alert(`${this.urlDetailsIn}`);
+  goDetails() {
+    window.open(this.urlDetailsIn, "blank");
   }
 
 

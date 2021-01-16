@@ -17,12 +17,12 @@ export class HomeComponent implements OnInit {
   pages: string = "1";
   query: string = "";
   ingredients: string[] = [];
+  recipes: Recipes[] = []
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   ngOnInit(): void {
-    // this.search();
-  }
 
+  }
 
   async search() {
     try {
@@ -34,16 +34,27 @@ export class HomeComponent implements OnInit {
             newIngredients += `${item},`;
           }
         }
-        console.log(this.query, this.pages, newIngredients);
 
-        // this.api.getRecipe(this.query, this.pages, newIngredients);
-        // console.log(data);
+        const data = await this.api.getRecipe(this.query, newIngredients, this.pages);
+        if (data) {
+
+          for (const item of data) {
+            const it: Recipes = item;
+            let newRecipe = it;
+            if (!it.title) { newRecipe.title = "No title" }
+            if (!it.href) { newRecipe.href = "http://localhost:4200" }
+            if (!it.ingredients) { newRecipe.ingredients = "none" }
+            if (!it.thumbnail) { newRecipe.thumbnail = "https://www.accesoriosresa.es/images/fotos/no_disponible.jpg" }
+            this.recipes.push(newRecipe);
+          }
+
+          this.searchBool = true;
+        } else {
+          alert('An error has occurred');
+        }
+
       } else {
-        this._snackBar.openFromComponent(PizzaPartyComponent, {
-          duration: 2000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-        });
+        this.toast();
       }
 
 
@@ -73,11 +84,32 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  reset() {
 
+    this.pages = "1";
+    this.query = "";
+    this.ingredients = [];
+    this.searchBool = false;
+
+  }
+
+  toast() {
+    this._snackBar.openFromComponent(PizzaPartyComponent, {
+      duration: 2000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
+  }
 
 }
 
 
+interface Recipes {
+  title: string,
+  href: string,
+  ingredients: string,
+  thumbnail: string
+}
 
 
 @Component({
