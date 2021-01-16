@@ -1,19 +1,26 @@
 <div class="card mb-3 main-card">
     <div class="row g-0">
         <div class="col-md-4 div-img-card">
+            <!-- ------Image-------- -->
             <img [src]="urlImg" class="card-img-top img-card" alt="Image card">
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 (click)="goDetails()"
-                [matTooltip]="title" matTooltipPosition="above" [matTooltipClass]="'tooltip-red'"
-                 class="card-title">{{title | shorten:20:false}}</h5>
-                <p class="card-text"
-                [matTooltip]="ingredients" matTooltipPosition="above" [matTooltipClass]="'tooltip-red'"
-                >{{ingredients | shorten:60:true}}</p>
+                <!-- ------Title-------- -->
+                <h5 (click)="goDetails()" [matTooltip]="title" matTooltipPosition="above"
+                    [matTooltipClass]="'tooltip-red'" class="card-title repons-ocult">{{title | shorten:20:false}}</h5>
+                <!-- ------Title Reponsive-------- -->
+                <h5 (click)="goDetails()" [matTooltip]="title" matTooltipPosition="above"
+                    [matTooltipClass]="'tooltip-red'" class="card-title repons-reveal">{{title}}</h5>
+                <!-- -----Details------ -->
+                <p class="card-text repons-ocult" [matTooltip]="ingredients" matTooltipPosition="above"
+                    [matTooltipClass]="'tooltip-red'">{{ingredients | shorten:60:true}}</p>
+                <!-- -----Details Reponsive------ -->
+                <p class="card-text repons-reveal" [matTooltip]="ingredients" matTooltipPosition="above"
+                    [matTooltipClass]="'tooltip-red'">{{ingredients}}</p>
+                <!-- -----Date------ -->
                 <p class="card-text"><small class="text-muted">{{date | date}}</small></p>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
-

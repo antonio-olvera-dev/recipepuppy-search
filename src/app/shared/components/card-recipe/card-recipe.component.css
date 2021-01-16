@@ -56,14 +56,26 @@
   background: #1c64b7;
   font-size: 1em;
 }
+.repons-ocult {
+  display: flex;
+}
+.repons-reveal {
+  display: none;
+}
 
 @media (max-width: 767px) {
   .main-card {
     height: fit-content;
   }
+  .repons-ocult {
+    display: none;
+  }
+  .repons-reveal {
+    display: flex;
+  }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 575px) {
   .main-card {
     display: flex;
     justify-content: center;
@@ -72,5 +84,11 @@
     min-width: fit-content;
     height: fit-content;
     margin: 1em;
+  }
+  .repons-ocult {
+    display: none;
+  }
+  .repons-reveal {
+    display: flex;
   }
 }
