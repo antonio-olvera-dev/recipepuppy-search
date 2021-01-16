@@ -9,5 +9,16 @@
 ### Instalación
 ```sh
 $ git clone https://github.com/antonioolvera1995/recipepuppy-search.git
+$ cd recipepuppy-search
+$ npm install -d
+$ cd api
+$ npm install -d
+$ cd ..
+```
 
+### Iniciar
+
+```sh
+$ npm run api
+$ ng serve
 ```
