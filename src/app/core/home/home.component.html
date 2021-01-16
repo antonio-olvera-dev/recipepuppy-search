@@ -1,6 +1,6 @@
 <main class="main-home" [ngClass]="{'main-home-2': searchBool}">
 
-
+<!-- --------------Button Reset------------------- -->
   <div class="div-icon" *ngIf="searchBool">
     <button (click)="reset()" mat-mini-fab color="warn" class="animate__animated animate__fadeInLeft" aria-label="Example icon button with a plus one icon">
       <mat-icon>restore</mat-icon>
@@ -16,7 +16,7 @@
 
     <!-- ----------Chips------------ -->
     <div class="chip-home">
-      <mat-form-field>
+      <mat-form-field >
         <mat-label>ingredients</mat-label>
         <mat-chip-list #chipList aria-label="ingredients selection">
           <mat-chip *ngFor="let ingredient of ingredients" [selectable]="true" [removable]="true"
@@ -24,7 +24,7 @@
             {{ingredient}}
             <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
           </mat-chip>
-          <input placeholder="New ingredients..." [matChipInputFor]="chipList"
+          <input  placeholder="New ingredients..." [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
             (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
